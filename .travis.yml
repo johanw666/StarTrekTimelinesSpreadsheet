@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - '10'
+  
+env:
+  - CXX=g++-6
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+
+before_install:
+ - docker run -dit --name emscripten -v $(pwd):/src trzeci/emscripten:sdk-incoming-64bit bash
+ - cd STTApi
+ - rm package-lock.json
+ - npm install
+ - cd ..
+
+install:
+ - rm package-lock.json
+ - npm install
+
+script:
+ - mkdir native_wasm/out
+ - docker exec -it emscripten em++ native/VoyageCalculator.cpp native_wasm/main.cpp -o native_wasm/out/voymod.js --bind -O1  -std=c++1y -s ASSERTIONS=1 -s DISABLE_EXCEPTION_CATCHING=0 -s NO_EXIT_RUNTIME=1 -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -s MODULARIZE=1 -s EXPORT_NAME="VoyMod" -I "native_wasm" -I "native"
+ - webpack --mode production --config webpack/webpack.build.web.config.js --display-error-details --display verbose

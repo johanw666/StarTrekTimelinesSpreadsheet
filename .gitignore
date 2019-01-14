@@ -1,0 +1,11 @@
+.vscode/launch.json
+node_modules/
+dist/
+builds/
+/.vs
+/notes.txt
+mobile/build.json
+native/bin/
+
+# Ignore All IDEA Folders
+.idea

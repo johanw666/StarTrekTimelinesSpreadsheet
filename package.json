@@ -5,10 +5,10 @@
   "description": "Tool for managing Star Trek Timelines crew",
   "author": "IAmPicard",
   "copyright": "Copyright © 2018 IAmPicard",
-  "homepage": "https://github.com/IAmPicard/StarTrekTimelinesSpreadsheet",
+  "homepage": "https://github.com/johanw666/StarTrekTimelinesSpreadsheet",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IAmPicard/StarTrekTimelinesSpreadsheet.git"
+    "url": "https://github.com/johanw666/StarTrekTimelinesSpreadsheet.git"
   },
   "license": "GPL-3.0",
   "build": {
